@@ -5,7 +5,7 @@ import Helmet from "./Helmet";
 
 interface ILayout {
   children?: any;
-  title: string;
+  title?: string;
 }
 
 export default function Layout({ children, title }: ILayout) {
@@ -13,7 +13,7 @@ export default function Layout({ children, title }: ILayout) {
     <>
       <Header></Header>
       <main>
-        <h1>{title}</h1>
+        {title ? <h1>{title}</h1> : null}
         {children}
       </main>
     </>

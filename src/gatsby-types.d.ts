@@ -1781,6 +1781,11 @@ type StringQueryOperatorInput = {
   readonly regex: InputMaybe<Scalars['String']>;
 };
 
+type getContentsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type getContentsQuery = { readonly allFile: { readonly nodes: ReadonlyArray<{ readonly name: string }> } };
+
 type getTitleQueryVariables = Exact<{ [key: string]: never; }>;
 
 
