@@ -1,20 +1,13 @@
 import * as React from "react";
-import { HeadFC, Link, PageProps } from "gatsby";
+import { HeadFC, PageProps } from "gatsby";
+import Layout from "../components/Layout";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">0hhanum</Link>
-          </li>
-          <li>
-            <Link to="https://github.com/0hhanum">Github</Link>
-          </li>
-        </ul>
-      </nav>
-      <h1>INDEX</h1>
+      <Layout title="INDEX">
+        This will be 'children' prop of Layout Component
+      </Layout>
     </>
   );
 };
