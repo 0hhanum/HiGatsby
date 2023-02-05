@@ -1,11 +1,21 @@
 import * as React from "react";
-import type { HeadFC, PageProps } from "gatsby";
+import { HeadFC, Link, PageProps } from "gatsby";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <div>
+    <>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">0hhanum</Link>
+          </li>
+          <li>
+            <Link to="https://github.com/0hhanum">Github</Link>
+          </li>
+        </ul>
+      </nav>
       <h1>INDEX</h1>
-    </div>
+    </>
   );
 };
 
