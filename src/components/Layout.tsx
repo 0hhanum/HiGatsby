@@ -1,5 +1,7 @@
+import { HeadFC } from "gatsby";
 import React from "react";
 import Header from "./Header";
+import Helmet from "./Helmet";
 
 interface ILayout {
   children?: any;

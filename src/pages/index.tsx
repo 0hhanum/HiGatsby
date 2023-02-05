@@ -1,6 +1,7 @@
 import * as React from "react";
 import { HeadFC, PageProps } from "gatsby";
 import Layout from "../components/Layout";
+import Helmet from "../components/Helmet";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -12,6 +13,5 @@ const IndexPage: React.FC<PageProps> = () => {
   );
 };
 
+export const Head: HeadFC = () => <Helmet title="Home" />;
 export default IndexPage;
-
-export const Head: HeadFC = () => <title>0hhanum</title>;
