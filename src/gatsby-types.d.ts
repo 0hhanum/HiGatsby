@@ -1998,6 +1998,13 @@ type getContensQueryVariables = Exact<{ [key: string]: never; }>;
 
 type getContensQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly excerpt: string | null, readonly frontmatter: { readonly author: string | null, readonly title: string | null, readonly category: string | null, readonly slug: string | null } | null }> } };
 
+type getContentDetailQueryVariables = Exact<{
+  frontmatter__slug: InputMaybe<Scalars['String']>;
+}>;
+
+
+type getContentDetailQuery = { readonly mdx: { readonly id: string, readonly body: string | null, readonly frontmatter: { readonly author: string | null, readonly category: string | null, readonly title: string | null, readonly slug: string | null } | null } | null };
+
 type getTitleQueryVariables = Exact<{ [key: string]: never; }>;
 
 
