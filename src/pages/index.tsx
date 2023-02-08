@@ -1,5 +1,5 @@
 import * as React from "react";
-import { graphql, HeadFC, PageProps } from "gatsby";
+import { graphql, HeadFC, Link, PageProps } from "gatsby";
 import Layout from "../components/Layout";
 import Helmet from "../components/Helmet";
 
@@ -8,11 +8,21 @@ const IndexPage = ({ data }: PageProps<Queries.getContensQuery>) => {
   return (
     <>
       <Layout title="INDEX">
-        <ul>
+        <section>
           {data.allMdx.nodes.map((content, index) => (
-            <li key={index}>{content.frontmatter?.title}</li>
+            <>
+              <article key={index}>
+                <Link to={`contents/${content.frontmatter?.slug}`}>
+                  <h3>{content.frontmatter?.title}</h3>
+                  <h5>Author: {content.frontmatter?.author}</h5>
+                  <h5>Category: {content.frontmatter?.category}</h5>
+                  <p>{content.excerpt}</p>
+                </Link>
+              </article>
+              <hr />
+            </>
           ))}
-        </ul>
+        </section>
       </Layout>
     </>
   );
@@ -27,6 +37,7 @@ export const query = graphql`
           author
           title
           category
+          slug
         }
         excerpt(pruneLength: 20)
       }
