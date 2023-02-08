@@ -3,13 +3,14 @@ import { graphql, HeadFC, PageProps } from "gatsby";
 import Layout from "../components/Layout";
 import Helmet from "../components/Helmet";
 
-const IndexPage = ({ data }: PageProps<Queries.getContentsQuery>) => {
+const IndexPage = ({ data }: PageProps<Queries.getContensQuery>) => {
+  console.log(data);
   return (
     <>
       <Layout title="INDEX">
         <ul>
-          {data.allFile.nodes.map((content, index) => (
-            <li key={index}>{content.name}</li>
+          {data.allMdx.nodes.map((content, index) => (
+            <li key={index}>{content.frontmatter?.title}</li>
           ))}
         </ul>
       </Layout>
@@ -19,10 +20,15 @@ const IndexPage = ({ data }: PageProps<Queries.getContentsQuery>) => {
 
 export const Head: HeadFC = () => <Helmet title="Home" />;
 export const query = graphql`
-  query getContents {
-    allFile {
+  query getContens {
+    allMdx {
       nodes {
-        name
+        frontmatter {
+          author
+          title
+          category
+        }
+        excerpt(pruneLength: 20)
       }
     }
   }
