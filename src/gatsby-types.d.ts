@@ -1348,6 +1348,7 @@ type MdxFilterListInput = {
 type MdxFrontmatter = {
   readonly author: Maybe<Scalars['String']>;
   readonly category: Maybe<Scalars['String']>;
+  readonly image: Maybe<File>;
   readonly slug: Maybe<Scalars['String']>;
   readonly title: Maybe<Scalars['String']>;
 };
@@ -1355,6 +1356,7 @@ type MdxFrontmatter = {
 type MdxFrontmatterFieldSelector = {
   readonly author: InputMaybe<FieldSelectorEnum>;
   readonly category: InputMaybe<FieldSelectorEnum>;
+  readonly image: InputMaybe<FileFieldSelector>;
   readonly slug: InputMaybe<FieldSelectorEnum>;
   readonly title: InputMaybe<FieldSelectorEnum>;
 };
@@ -1362,6 +1364,7 @@ type MdxFrontmatterFieldSelector = {
 type MdxFrontmatterFilterInput = {
   readonly author: InputMaybe<StringQueryOperatorInput>;
   readonly category: InputMaybe<StringQueryOperatorInput>;
+  readonly image: InputMaybe<FileFilterInput>;
   readonly slug: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
 };
@@ -1369,6 +1372,7 @@ type MdxFrontmatterFilterInput = {
 type MdxFrontmatterSortInput = {
   readonly author: InputMaybe<SortOrderEnum>;
   readonly category: InputMaybe<SortOrderEnum>;
+  readonly image: InputMaybe<FileSortInput>;
   readonly slug: InputMaybe<SortOrderEnum>;
   readonly title: InputMaybe<SortOrderEnum>;
 };
@@ -2595,7 +2599,7 @@ type getContentDetailQueryVariables = Exact<{
 }>;
 
 
-type getContentDetailQuery = { readonly mdx: { readonly id: string, readonly body: string | null, readonly frontmatter: { readonly author: string | null, readonly category: string | null, readonly title: string | null, readonly slug: string | null } | null } | null };
+type getContentDetailQuery = { readonly mdx: { readonly frontmatter: { readonly author: string | null, readonly category: string | null, readonly title: string | null, readonly slug: string | null, readonly image: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null };
 
 type getTitleQueryVariables = Exact<{ [key: string]: never; }>;
 
