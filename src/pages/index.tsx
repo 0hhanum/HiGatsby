@@ -2,15 +2,15 @@ import * as React from "react";
 import { graphql, HeadFC, Link, PageProps } from "gatsby";
 import Layout from "../components/Layout";
 import Helmet from "../components/Helmet";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const IndexPage = ({ data }: PageProps<Queries.getContensQuery>) => {
-  console.log(data);
   return (
     <>
       <Layout title="INDEX">
-        <section>
-          {data.allMdx.nodes.map((content, index) => (
-            <>
+        <>
+          <section>
+            {data.allMdx.nodes.map((content, index) => (
               <article key={index}>
                 <Link to={`contents/${content.frontmatter?.slug}`}>
                   <h3>{content.frontmatter?.title}</h3>
@@ -18,11 +18,18 @@ const IndexPage = ({ data }: PageProps<Queries.getContensQuery>) => {
                   <h5>Category: {content.frontmatter?.category}</h5>
                   <p>{content.excerpt}</p>
                 </Link>
+                <hr />
               </article>
-              <hr />
-            </>
+            ))}
+          </section>
+          {data.allContentfulContents.nodes.map((node, index) => (
+            <GatsbyImage
+              image={getImage(node.image?.gatsbyImageData!)!}
+              key={index}
+              alt={node.name || "no alt"}
+            />
           ))}
-        </section>
+        </>
       </Layout>
     </>
   );
@@ -40,6 +47,14 @@ export const query = graphql`
           slug
         }
         excerpt(pruneLength: 20)
+      }
+    }
+    allContentfulContents {
+      nodes {
+        name
+        image {
+          gatsbyImageData(width: 200)
+        }
       }
     }
   }
