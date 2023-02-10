@@ -10,12 +10,12 @@ interface ILayout {
 
 export default function Layout({ children, title }: ILayout) {
   return (
-    <>
+    <div className="container">
       <Header></Header>
       <main>
         {title ? <h1>{title}</h1> : null}
         {children}
       </main>
-    </>
+    </div>
   );
 }

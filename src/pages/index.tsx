@@ -9,7 +9,10 @@ const IndexPage = ({ data }: PageProps<Queries.getContensQuery>) => {
     <>
       <Layout title="INDEX">
         <>
-          <section>
+          <section
+            className="grid"
+            style={{ gridTemplateColumns: "2fr 1fr 1fr" }}
+          >
             {data.allMdx.nodes.map((content, index) => (
               <article key={index}>
                 <Link to={`contents/${content.frontmatter?.slug}`}>
@@ -22,13 +25,15 @@ const IndexPage = ({ data }: PageProps<Queries.getContensQuery>) => {
               </article>
             ))}
           </section>
-          <div style={{ display: "flex" }}>
+          <div
+            className="grid"
+            style={{ gridTemplateColumns: "repeat(3, 1fr)" }}
+          >
             {data.allContentfulContents.nodes.map((node, index) => (
-              <article>
+              <article key={index}>
                 <Link to={`contents/${node.id}`}>
                   <GatsbyImage
                     image={getImage(node.image?.gatsbyImageData!)!}
-                    key={index}
                     alt={node.name || "no alt"}
                   />
 
