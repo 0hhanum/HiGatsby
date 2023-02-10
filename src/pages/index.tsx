@@ -22,13 +22,21 @@ const IndexPage = ({ data }: PageProps<Queries.getContensQuery>) => {
               </article>
             ))}
           </section>
-          {data.allContentfulContents.nodes.map((node, index) => (
-            <GatsbyImage
-              image={getImage(node.image?.gatsbyImageData!)!}
-              key={index}
-              alt={node.name || "no alt"}
-            />
-          ))}
+          <div style={{ display: "flex" }}>
+            {data.allContentfulContents.nodes.map((node, index) => (
+              <article>
+                <Link to={`contents/${node.id}`}>
+                  <GatsbyImage
+                    image={getImage(node.image?.gatsbyImageData!)!}
+                    key={index}
+                    alt={node.name || "no alt"}
+                  />
+
+                  <h3>{node.name}</h3>
+                </Link>
+              </article>
+            ))}
+          </div>
         </>
       </Layout>
     </>
@@ -52,6 +60,7 @@ export const query = graphql`
     allContentfulContents {
       nodes {
         name
+        id
         image {
           gatsbyImageData(width: 200)
         }

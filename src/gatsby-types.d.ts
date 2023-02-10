@@ -548,6 +548,7 @@ type ContentfulContents = ContentfulEntry & ContentfulReference & Node & {
   readonly children: ReadonlyArray<Node>;
   readonly contentful_id: Scalars['String'];
   readonly createdAt: Maybe<Scalars['Date']>;
+  readonly gatsbyPath: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly image: Maybe<ContentfulAsset>;
   readonly internal: Internal;
@@ -566,6 +567,11 @@ type ContentfulContents_createdAtArgs = {
   formatString: InputMaybe<Scalars['String']>;
   fromNow: InputMaybe<Scalars['Boolean']>;
   locale: InputMaybe<Scalars['String']>;
+};
+
+
+type ContentfulContents_gatsbyPathArgs = {
+  filePath: InputMaybe<Scalars['String']>;
 };
 
 
@@ -625,6 +631,7 @@ type ContentfulContentsFieldSelector = {
   readonly children: InputMaybe<NodeFieldSelector>;
   readonly contentful_id: InputMaybe<FieldSelectorEnum>;
   readonly createdAt: InputMaybe<FieldSelectorEnum>;
+  readonly gatsbyPath: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly image: InputMaybe<ContentfulAssetFieldSelector>;
   readonly internal: InputMaybe<InternalFieldSelector>;
@@ -641,6 +648,7 @@ type ContentfulContentsFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly contentful_id: InputMaybe<StringQueryOperatorInput>;
   readonly createdAt: InputMaybe<DateQueryOperatorInput>;
+  readonly gatsbyPath: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly image: InputMaybe<ContentfulAssetFilterInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
@@ -698,6 +706,7 @@ type ContentfulContentsSortInput = {
   readonly children: InputMaybe<NodeSortInput>;
   readonly contentful_id: InputMaybe<SortOrderEnum>;
   readonly createdAt: InputMaybe<SortOrderEnum>;
+  readonly gatsbyPath: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly image: InputMaybe<ContentfulAssetSortInput>;
   readonly internal: InputMaybe<InternalSortInput>;
@@ -2556,6 +2565,7 @@ type Query_contentfulContentsArgs = {
   children: InputMaybe<NodeFilterListInput>;
   contentful_id: InputMaybe<StringQueryOperatorInput>;
   createdAt: InputMaybe<DateQueryOperatorInput>;
+  gatsbyPath: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   image: InputMaybe<ContentfulAssetFilterInput>;
   internal: InputMaybe<InternalFilterInput>;
@@ -3681,7 +3691,7 @@ type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: 
 type getContensQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type getContensQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly excerpt: string | null, readonly frontmatter: { readonly author: string | null, readonly title: string | null, readonly category: string | null, readonly slug: string | null } | null }> }, readonly allContentfulContents: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly image: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData | null } | null }> } };
+type getContensQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly excerpt: string | null, readonly frontmatter: { readonly author: string | null, readonly title: string | null, readonly category: string | null, readonly slug: string | null } | null }> }, readonly allContentfulContents: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly id: string, readonly image: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData | null } | null }> } };
 
 type getContentDetailQueryVariables = Exact<{
   frontmatter__slug: InputMaybe<Scalars['String']>;
@@ -3689,6 +3699,13 @@ type getContentDetailQueryVariables = Exact<{
 
 
 type getContentDetailQuery = { readonly mdx: { readonly frontmatter: { readonly author: string | null, readonly category: string | null, readonly title: string | null, readonly slug: string | null, readonly image: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null };
+
+type getDynamicContentDetailQueryVariables = Exact<{
+  id: InputMaybe<Scalars['String']>;
+}>;
+
+
+type getDynamicContentDetailQuery = { readonly contentfulContents: { readonly name: string | null, readonly views: number | null, readonly createdAt: string | null, readonly image: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData | null } | null } | null };
 
 type getTitleQueryVariables = Exact<{ [key: string]: never; }>;
 

@@ -1,5 +1,5 @@
-import { graphql, HeadFC, PageProps } from "gatsby";
-import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image";
+import { graphql, PageProps } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
 import Helmet from "../../components/Helmet";
 import Layout from "../../components/Layout";
