@@ -1,3 +1,3 @@
 HI GATSBY👾
 
-[deploy](https://higatsby.netlify.app/)
+[~~deploy~~ deprecated](https://higatsby.netlify.app/)
